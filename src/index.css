@@ -10,3 +10,8 @@
   font-optical-sizing: auto;
   background-color: #222831;
 }
+
+body {
+  padding-bottom: 90px;
+  background-color: #222831;
+}
