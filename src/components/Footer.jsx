@@ -1,7 +1,7 @@
 import React from "react";
 import FooterCSS from "../css/Footer.module.css";
 import data from "../Data";
-import { FaGlobe, FaInstagram, FaFacebookF, FaEnvelope } from "react-icons/fa";
+import { FaGlobe, FaInstagram, FaFacebookF, FaFacebookSquare, FaEnvelope } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -19,11 +19,19 @@ function Footer() {
         </a>
         {/* Facebook link */}
         <a
-          href="https://facebook.com/Artistsoonee"
+          href="https://facebook.com/soonhee.lee.31542"
           target="_blank"
           rel="noopener noreferrer"
         >
           <FaFacebookF size={24} />
+        </a>
+        {/* Second Facebook link using a different icon for clarity */}
+        <a
+          href="https://facebook.com/Artistsoonee"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaFacebookSquare size={24} />
         </a>
        {/* Generic website link */}
         <a
