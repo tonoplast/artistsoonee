@@ -7,7 +7,7 @@
 .content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /*center;*/
     justify-content: center;
     padding: 20px;
     margin: auto;
@@ -81,4 +81,16 @@
     .contactButton {
         font-size: 1.2em;
     }
+}
+
+.textWrapper p {
+    white-space: pre-line;
+}
+
+
+/* In About.module.css or a markdown-specific CSS file */
+.react-markdown h2,
+.react-markdown p {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }

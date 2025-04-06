@@ -2,21 +2,30 @@ import React, { useState } from "react";
 import PortfolioCSS from "../css/Portfolio.module.css";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import imageMetadata from "./ImageMetadata"; // Mapping of filename to metadata
 
 // Dynamically import all images from the assets/images folder
 const importAll = (r) => r.keys().map(r);
-const images = importAll(
+let images = importAll(
   require.context("../assets/images", false, /\.(webp|png|jpg|jpeg|gif)$/)
 );
+
+// Sort images in descending order (newest first)
+// Extract the filename (e.g., "00001_20230415.jpg") and sort based on it.
+images = images.sort((a, b) => {
+  const nameA = a.split("/").pop();
+  const nameB = b.split("/").pop();
+  return nameB.localeCompare(nameA);
+});
 
 // Helper function to extract the year from a filename.
 // Assumes filenames are formatted like "00001_YYYYMMDD.jpg"
 function getYearFromFilename(src) {
-  const filename = src.split('/').pop(); // e.g. "00001_20230415.jpg"
-  const parts = filename.split('_');
+  const filename = src.split("/").pop();
+  const parts = filename.split("_");
   if (parts.length < 2) return null;
-  const datePart = parts[1].split('.')[0]; // e.g. "20230415"
-  return datePart.slice(0, 4); // e.g. "2023"
+  const datePart = parts[1].split(".")[0];
+  return datePart.slice(0, 4);
 }
 
 function Portfolio() {
@@ -29,7 +38,7 @@ function Portfolio() {
     if (year) yearsSet.add(year);
   });
   const years = Array.from(yearsSet);
-  years.sort((a, b) => b - a); // Sort descending (most recent first)
+  years.sort((a, b) => b - a); // Sort descending by year
   years.unshift("All");
 
   const handleYearChange = (e) => {
@@ -75,6 +84,10 @@ function ImageWrapper({ src, index }) {
     threshold: 0.2,
   });
 
+  // Extract the filename to look up metadata
+  const filename = src.split("/").pop();
+  const metadata = imageMetadata[filename] || {};
+
   React.useEffect(() => {
     if (inView) {
       controls.start({ opacity: 1 });
@@ -82,6 +95,9 @@ function ImageWrapper({ src, index }) {
       controls.start({ opacity: 0 });
     }
   }, [controls, inView]);
+
+  // Only render caption if metadata is provided
+  const hasCaption = metadata.title || metadata.size;
 
   return (
     <motion.div
@@ -93,10 +109,16 @@ function ImageWrapper({ src, index }) {
     >
       <img
         src={src}
-        alt={`Portfolio ${index + 1}`}
+        alt={metadata.title || `Portfolio ${index + 1}`}
         className={PortfolioCSS.image}
         draggable="false"
       />
+      {hasCaption && (
+        <div className={PortfolioCSS.caption}>
+          {metadata.title && <h3>{metadata.title}</h3>}
+          {metadata.size && <p>{metadata.size}</p>}
+        </div>
+      )}
     </motion.div>
   );
 }

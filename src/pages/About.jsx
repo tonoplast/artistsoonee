@@ -1,4 +1,6 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AboutCSS from "../css/About.module.css";
@@ -9,7 +11,6 @@ const importAll = (r) => r.keys().map(r);
 const images = importAll(
   require.context("../assets/profile", false, /\.(webp|png|jpg|jpeg|gif)$/)
 );
-
 const profileImage = images.length > 0 ? images[0] : null;
 
 function About() {
@@ -38,6 +39,16 @@ function About() {
           <h1>{data.AboutHeading}</h1>
           <p>{data.AboutTextParagraph1}</p>
           <p>{data.AboutTextParagraph2}</p>
+          <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+            {data.AboutCareerMarkdown}
+          </ReactMarkdown>
+          <div
+            className={AboutCSS.contactInfo}
+            dangerouslySetInnerHTML={{ __html: data.AboutContactInfo }}
+          />
+          
+          {/* Render the contact info */}
+          
           <button onClick={handleClick} className={AboutCSS.contactButton}>
             {data.AboutButtonText}
           </button>
