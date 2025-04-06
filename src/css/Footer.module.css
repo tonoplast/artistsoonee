@@ -1,5 +1,5 @@
 .footer {
-    /* Removed background-color for a more natural appearance */
+    background-color: rgba(57, 62, 70, 0.6); /* 90% transparent */
     color: #fcedda;
     padding: 10px 0;
     text-align: center;
@@ -17,7 +17,6 @@
   justify-content: center; /* Centers the icons horizontally */
   align-items: center;     /* Centers the icons vertically */
 }
-
 
 .social a {
   color: inherit;
