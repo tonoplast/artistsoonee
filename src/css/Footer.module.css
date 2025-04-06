@@ -1,20 +1,34 @@
 .footer {
-    background-color: #393E46;
+    /* Removed background-color for a more natural appearance */
     color: #fcedda;
     padding: 10px 0;
     text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures the footer appears on top */
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+.social {
+  margin: 10px 0;
+  display: flex;
+  gap: 15px;
+  justify-content: center; /* Centers the icons horizontally */
+  align-items: center;     /* Centers the icons vertically */
 }
 
+
+.social a {
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.social a:hover {
+  color: #F4A261;
+}
+
+/* Optional: adjust paragraph styling if needed */
 p {
     margin: 0;
     font-size: 14px;

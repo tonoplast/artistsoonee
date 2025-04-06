@@ -24,3 +24,55 @@
         gap: 20px;
     }
 }
+
+.portfolioContainer {
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  color: #fcedda;
+}
+
+.filter {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  color: #fcedda;
+}
+
+.yearDropdown {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  margin-left: 10px;
+  font-family: 'Roboto', sans-serif;
+  color: #fcedda;
+  background-color: transparent; /* optional, for a stylish look */
+  border: 1px solid #fcedda; /* optional, to match the text color */
+}
+
+/* Gallery Styles */
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 0px 20px 20px 20px;
+}
+
+.imageWrapper {
+    position: relative;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+}
+
+@media (max-width: 1024px) {
+    .gridContainer {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+    }
+}
