@@ -44,6 +44,30 @@ def process_images(input_folder, output_folder, target_size=(800, 1000), backgro
     output_folder = Path(output_folder)
     output_folder.mkdir(exist_ok=True)
 
+    # def get_sort_date(f):
+    #     stat = f.stat()
+    #     if sort_by == 'modified':
+    #         return datetime.fromtimestamp(stat.st_mtime)
+    #     elif sort_by == 'created':
+    #         return datetime.fromtimestamp(stat.st_ctime)
+    #     elif sort_by == 'exif':
+    #         try:
+    #             with Image.open(f) as img:
+    #                 exif_data = img.getexif()
+    #                 dt_original = exif_data.get(36867)
+    #                 if dt_original:
+    #                     # EXIF date format: "YYYY:MM:DD HH:MM:SS"
+    #                     return datetime.strptime(dt_original, "%Y:%m:%d %H:%M:%S")
+    #         except Exception:
+    #             pass
+    #         # Fallback if EXIF not available.
+    #         return datetime.fromtimestamp(stat.st_mtime)
+    #     elif sort_by == 'oldest':
+    #         # Return the earliest among creation, modification, and accessed times.
+    #         return datetime.fromtimestamp(min(stat.st_ctime, stat.st_mtime, stat.st_atime))
+    #     else:
+    #         return datetime.fromtimestamp(stat.st_mtime)
+
     def get_sort_date(f):
         stat = f.stat()
         if sort_by == 'modified':
@@ -60,13 +84,29 @@ def process_images(input_folder, output_folder, target_size=(800, 1000), backgro
                         return datetime.strptime(dt_original, "%Y:%m:%d %H:%M:%S")
             except Exception:
                 pass
-            # Fallback if EXIF not available.
+            # Fallback if EXIF is not available.
             return datetime.fromtimestamp(stat.st_mtime)
         elif sort_by == 'oldest':
-            # Return the earliest among creation, modification, and accessed times.
-            return datetime.fromtimestamp(min(stat.st_ctime, stat.st_mtime, stat.st_atime))
+            # Collect OS dates.
+            dates = [
+                datetime.fromtimestamp(stat.st_ctime),
+                datetime.fromtimestamp(stat.st_mtime),
+                datetime.fromtimestamp(stat.st_atime)
+            ]
+            # Try to extract EXIF date (DateTimeOriginal) and add if available.
+            try:
+                with Image.open(f) as img:
+                    exif_data = img.getexif()
+                    dt_original = exif_data.get(36867)
+                    if dt_original:
+                        exif_date = datetime.strptime(dt_original, "%Y:%m:%d %H:%M:%S")
+                        dates.append(exif_date)
+            except Exception:
+                pass
+            return min(dates)
         else:
             return datetime.fromtimestamp(stat.st_mtime)
+
 
     # Gather and sort image files.
     image_files = sorted(
@@ -87,7 +127,9 @@ def process_images(input_folder, output_folder, target_size=(800, 1000), backgro
 
             if abs(image_aspect - target_aspect) <= aspect_tolerance:
                 # Aspect ratios are similar: simply resize.
-                result_img = img.resize(target_size, Image.ANTIALIAS)
+                # result_img = img.resize(target_size, Image.ANTIALIAS)
+                result_img = img.resize(target_size, Image.LANCZOS)
+
             else:
                 # Resize while preserving aspect ratio.
                 if image_aspect > target_aspect:
@@ -96,7 +138,9 @@ def process_images(input_folder, output_folder, target_size=(800, 1000), backgro
                 else:
                     new_height = target_height
                     new_width = round(target_height * image_aspect)
-                resized_img = img.resize((new_width, new_height), Image.ANTIALIAS)
+                # resized_img = img.resize((new_width, new_height), Image.ANTIALIAS)
+                resized_img = img.resize((new_width, new_height), Image.LANCZOS)
+
                 # Create a new image with the desired background color.
                 result_img = Image.new("RGB", target_size, background_color)
                 paste_x = (target_width - new_width) // 2
