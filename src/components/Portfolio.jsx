@@ -11,7 +11,6 @@ let images = importAll(
 );
 
 // Sort images in descending order (newest first)
-// Extract the filename (e.g., "00001_20230415.jpg") and sort based on it.
 images = images.sort((a, b) => {
   const nameA = a.split("/").pop();
   const nameB = b.split("/").pop();
@@ -19,7 +18,6 @@ images = images.sort((a, b) => {
 });
 
 // Helper function to extract the year from a filename.
-// Assumes filenames are formatted like "00001_YYYYMMDD.jpg"
 function getYearFromFilename(src) {
   const filename = src.split("/").pop();
   const parts = filename.split("_");
@@ -30,6 +28,7 @@ function getYearFromFilename(src) {
 
 function Portfolio() {
   const [selectedYear, setSelectedYear] = useState("All");
+  const [currentYear, setCurrentYear] = useState(null);
 
   // Get unique years from the image filenames
   const yearsSet = new Set();
@@ -43,6 +42,11 @@ function Portfolio() {
 
   const handleYearChange = (e) => {
     setSelectedYear(e.target.value);
+  };
+
+  // Callback to update the floating year
+  const handleImageVisible = (year) => {
+    setCurrentYear(year);
   };
 
   // Filter images based on selected year
@@ -68,21 +72,57 @@ function Portfolio() {
           ))}
         </select>
       </div>
+
+      {/* Floating Year Display */}
+      {currentYear && (
+        <div className={PortfolioCSS.floatingYearWrapper}>
+          <motion.div
+            key={currentYear}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className={PortfolioCSS.floatingYear}
+          >
+            {currentYear}
+          </motion.div>
+        </div>
+      )}
+
       <div className={PortfolioCSS.gridContainer}>
         {filteredImages.map((src, index) => (
-          <ImageWrapper key={index} src={src} index={index} />
+          <ImageWrapper
+            key={index}
+            src={src}
+            index={index}
+            onVisible={handleImageVisible}
+          />
         ))}
       </div>
     </div>
   );
 }
 
-function ImageWrapper({ src, index }) {
+function ImageWrapper({ src, index, onVisible }) {
   const controls = useAnimation();
+  // Main observer for fade-in animation
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.2,
   });
+  
+  // Second observer to detect when the image is at the center
+  const [yearRef, yearInView] = useInView({
+    triggerOnce: false,
+    threshold: 0.5,
+    // Adjust the rootMargin to control when the image is considered “centered”
+    rootMargin: "-25% 0px -25% 0px",
+  });
+
+  // Combine the refs so the same element is observed by both hooks
+  const setRefs = (node) => {
+    ref(node);
+    yearRef(node);
+  };
 
   // Extract the filename to look up metadata
   const filename = src.split("/").pop();
@@ -96,12 +136,22 @@ function ImageWrapper({ src, index }) {
     }
   }, [controls, inView]);
 
+  // When the image is centered, call the onVisible callback
+  React.useEffect(() => {
+    if (yearInView && onVisible) {
+      const year = getYearFromFilename(src);
+      if (year) {
+        onVisible(year);
+      }
+    }
+  }, [yearInView, src, onVisible]);
+
   // Only render caption if metadata is provided
   const hasCaption = metadata.title || metadata.size;
 
   return (
     <motion.div
-      ref={ref}
+      ref={setRefs}
       animate={controls}
       initial={{ opacity: 0 }}
       transition={{ duration: 1.5, ease: "easeIn" }}
