@@ -34,7 +34,7 @@ function Footer() {
           <FaGlobe size={24} />
         </a>
         {/* Email link */}
-        <a href="mailto:www.artistsoon@gmail.com">
+        <a href="mailto:artistsoon@gmail.com">
           <FaEnvelope size={24} />
         </a>
       </div>
