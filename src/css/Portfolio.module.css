@@ -63,7 +63,7 @@
     bottom: 10%;
     transform: translateX(-50%);
     border-left: 2px solid currentColor;
-    z-index: 1000;
+    /* z-index: 1000; */
   }
   
   .floatingYearWrapper {
@@ -71,7 +71,7 @@
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    z-index: 2000;
+    /* z-index: 2000; */
     will-change: top;
   }
   
@@ -84,6 +84,6 @@
     padding: 0 0.75em;               /* space between text and lines */
     border-left: 2px solid currentColor;
     border-right: 2px solid currentColor;
-    background-color: #242738;
-    z-index: 3000;
+    background-color: #242738; /* #242738; */
+    /* z-index: 3000; */
   }
