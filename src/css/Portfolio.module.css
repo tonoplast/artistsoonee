@@ -82,8 +82,8 @@
     font-size: 1rem;
     font-weight: bold;
     padding: 0 0.75em;               /* space between text and lines */
-    border-left: 2px solid currentColor;
-    border-right: 2px solid currentColor;
+    border-left: 3px solid currentColor;
+    border-right: 3px solid currentColor;
     background-color: #242738; /* #242738; */
     /* z-index: 3000; */
   }
