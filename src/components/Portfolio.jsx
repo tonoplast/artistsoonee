@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PortfolioCSS from "../css/Portfolio.module.css";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -29,6 +29,31 @@ function getYearFromFilename(src) {
 function Portfolio() {
   const [selectedYear, setSelectedYear] = useState("All");
   const [currentYear, setCurrentYear] = useState(null);
+  // This state will control the vertical position of the floating year (in percentage)
+  const [yearTop, setYearTop] = useState("12%");
+
+  // Listen to scroll events and update the vertical position of the floating year
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollTop = window.pageYOffset;
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPercentage = scrollTop / maxScroll;
+          // Map scroll progress into a vertical position between 12% and 87%
+          const newTop = 12 + scrollPercentage * 75;
+          // Round to 1 decimal place to avoid rapid micro updates:
+          setYearTop(`${newTop.toFixed(1)}%`);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Get unique years from the image filenames
   const yearsSet = new Set();
@@ -44,7 +69,7 @@ function Portfolio() {
     setSelectedYear(e.target.value);
   };
 
-  // Callback to update the floating year
+  // Callback to update the floating year when an image is centered in view
   const handleImageVisible = (year) => {
     setCurrentYear(year);
   };
@@ -73,13 +98,21 @@ function Portfolio() {
         </select>
       </div>
 
+      {/* Static Vertical Line */}
+      <div className={PortfolioCSS.staticLine}></div>
+
       {/* Floating Year Display */}
       {currentYear && (
-        <div className={PortfolioCSS.floatingYearWrapper}>
+        <div
+          className={PortfolioCSS.floatingYearWrapper}
+          style={{ top: yearTop }}
+        >
+        <div className={PortfolioCSS.floatingYearLine}></div>
+
           <motion.div
             key={currentYear}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0.8 }}
+            animate={{ opacity: 0.98 }}
             transition={{ duration: 0.5 }}
             className={PortfolioCSS.floatingYear}
           >

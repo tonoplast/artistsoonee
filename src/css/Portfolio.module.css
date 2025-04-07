@@ -1,152 +1,89 @@
-.gridContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 0px 20px 20px 20px;
-}
-
-.imageWrapper {
-    position: relative;
-}
-
-.image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    pointer-events: none;
-    user-select: none;
-}
-
-@media (max-width: 1024px) {
-    .gridContainer {
-        grid-template-columns: 1fr;
-        padding: 20px;
-        gap: 20px;
-    }
-}
-
 .portfolioContainer {
     padding: 20px;
     font-family: 'Roboto', sans-serif;
     color: #fcedda;
-}
-
-.filter {
+    /* Optionally set a background if needed, e.g.: */
+    /* background: #121212; */
+  }
+  
+  .filter {
     text-align: center;
     margin-bottom: 20px;
-    font-family: 'Roboto', sans-serif;
     color: #fcedda;
-}
-
-.yearDropdown {
+  }
+  
+  .yearDropdown {
     padding: 8px;
     font-size: 14px;
     border-radius: 4px;
     margin-left: 10px;
-    font-family: 'Roboto', sans-serif;
     color: #fcedda;
-    background-color: transparent; /* optional, for a stylish look */
-    border: 1px solid #fcedda; /* optional, to match the text color */
-}
-
-/* Gallery Styles */
-.gridContainer {
+    background-color: #242738; /*transparent;*/
+    border: 1px solid #fcedda;
+  }
+  
+  .gridContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    padding: 0px 20px 20px 20px;
-}
-
-.imageWrapper {
+    padding: 0 20px 20px 20px;
+  }
+  
+  .imageWrapper {
     position: relative;
-}
-
-.image {
+  }
+  
+  .image {
     width: 100%;
     height: auto;
     object-fit: cover;
     pointer-events: none;
     user-select: none;
-}
-
-@media (max-width: 1024px) {
+  }
+  
+  @media (max-width: 1024px) {
     .gridContainer {
-        grid-template-columns: 1fr;
-        padding: 20px;
-        gap: 20px;
+      grid-template-columns: 1fr;
+      padding: 20px;
+      gap: 20px;
     }
-}
-
-.caption {
+  }
+  
+  .caption {
     text-align: center;
     margin-top: 8px;
     font-size: 0.9rem;
     color: #555;
-} 
-
-
-.floatingYear {
+  }
+  
+  /* Static Vertical Line: fixed in place */
+  .staticLine {
     position: fixed;
-    top: 50%;
-    /* left: 50%; */
-    transform: translate(-50%, -50%) rotate(-90deg);
-    font-size: 1rem;
-    font-weight: bold;
-    z-index: 5000;
-}
-
-  /* Add horizontal lines on either side */
-.floatingYear::before,
-.floatingYear::after {
-    content: "";
-    position: absolute;
-    width: 1vw;       /* Adjust width as needed */
-    height: 2px;       /* Adjust line thickness as needed */
-    background-color: currentColor; /* Same as your text color */
-    top: 50%;
-    transform: rotate(90deg); 
-}
-
-.floatingYear::before {
-    right: 100%;
-    margin-right: 20px; /* Adjust spacing between the line and the year */
-}
-
-.floatingYear::after {
-    left: 100%;
-    margin-left: 20px;
-}
-
-.floatingYearWrapper {
+    top: 10%;
+    bottom: 10%;
+    transform: translateX(-50%);
+    border-left: 2px solid currentColor;
+    z-index: 1000;
+  }
+  
+  .floatingYearWrapper {
     position: fixed;
-    top: 50%;
-    /* left: 50%; */
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
-}
-
-  /* Pseudo-elements on the wrapper for horizontal lines */
-.floatingYearWrapper::before,
-.floatingYearWrapper::after {
-    content: "";
-    flex: 1;
-    height: 2px;
-    background-color: currentColor;
-}
-
-.floatingYearWrapper::before {
-    margin-right: 20px; /* Space between line and year */
-}
-
-.floatingYearWrapper::after {
-    margin-left: 20px;
-}
-
-.floatingYear {
+    z-index: 2000;
+    will-change: top;
+  }
+  
+  /* Floating Year: rotated and given background & padding to hide the static line behind it */
+  .floatingYear {
     display: inline-block;
     transform: rotate(-90deg);
     font-size: 1rem;
     font-weight: bold;
-    z-index: 5000;
-}
+    padding: 0 0.75em;               /* space between text and lines */
+    border-left: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    background-color: #242738;
+    z-index: 3000;
+  }

@@ -88,9 +88,29 @@
 }
 
 
+.contactInfo {
+    color: white !important;
+}
+
+.contactInfo u {
+    color: white !important;
+}
+
+
+
 /* In About.module.css or a markdown-specific CSS file */
-.react-markdown h2,
 .react-markdown p {
     margin-top: 1em;
     margin-bottom: 1em;
+    color: lightgray;
 }
+
+.react-markdown h2 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color: white;
+}
+
+.react-markdown li::marker {
+    color: lightgray;
+}  
