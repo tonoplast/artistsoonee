@@ -75,7 +75,7 @@
 /* Counter in corner */
 .counter {
   position: absolute;
-  bottom: 3rem;
+  bottom: 5rem;
   right: 0rem;
   background: rgba(0,0,0,0.5);
   color: #fff;
