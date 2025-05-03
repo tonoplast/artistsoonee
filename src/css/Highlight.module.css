@@ -1,29 +1,34 @@
 
 
+/* 1) Make the container a positioned box with a fixed/minimum height: */
 .slideshowContainer {
   position: relative;
-  padding-bottom: 60px; /* ← adjust this to be at least your footer’s height */
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 75vh;
+  padding-bottom: 80px;  /* to leave room for the counter / caption if you like */
+  overflow: hidden;
 }
 
 .slideWrapper {
-  /* fill up to 90% of its parent (or viewport if that’s the parent) */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 90%;
-  /* but never exceed 800px */
   max-width: 800px;
-  margin: 0 auto;            /* center it */
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: auto;
-  overflow: visible;
+  
 }
 
 .slideshowImage {
   position: relative;  /* or static */
   max-width: 100%;
-  max-height: 75vh;    /* reserve room for the caption */
+  max-height: 75vh;
   object-fit: contain;
 }
 
@@ -35,10 +40,6 @@
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
   text-align: center;
-
-  /* fluid font-size: 
-     – never smaller than 0.9rem
-     – grow with viewport up to 1.3rem */
   font-size: clamp(0.9rem, 1.5vw, 1.3rem);
 }
 
