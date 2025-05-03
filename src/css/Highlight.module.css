@@ -5,9 +5,8 @@
   max-width: 800px;
   margin: 0 auto;
   min-height: 75vh;
-  min-height: calc(100vh - 80px);
   /* padding-bottom: 1rem;  */
-  /* padding-bottom: 80px;  */
+  padding-bottom: 80px; 
   overflow: hidden;
 }
 
@@ -77,7 +76,7 @@
 .counter {
   position: absolute;
   bottom: 3rem;
-  right: 1rem;
+  right: 0rem;
   background: rgba(0,0,0,0.5);
   color: #fff;
   padding: 0.3rem 0.6rem;
