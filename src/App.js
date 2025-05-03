@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 import { Toaster } from "react-hot-toast";
 import Home from "./pages/Home";
+import Gallery from "./pages/Gallery";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import Upload from "./pages/Upload";
@@ -24,7 +25,8 @@ const App = () => {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/upload" element={<Upload />} />

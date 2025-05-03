@@ -13,17 +13,31 @@ function Header() {
 
   return (
     <div className={HeaderCSS.container}>
-      <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+      {/* <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+        <h1 style={{ fontWeight: "800" }}>{data.HeaderTitle}</h1>
+      </Link> */}
+
+      <Link
+        to="/gallery"
+        onClick={handleLinkClick}
+        style={{ textDecoration: "none", color: "white" }}
+      >
         <h1 style={{ fontWeight: "800" }}>{data.HeaderTitle}</h1>
       </Link>
+
       <div className={HeaderCSS.hamburger}>
         <Hamburger toggled={menuOpen} toggle={setMenuOpen} />
       </div>
       <nav className={`${HeaderCSS.nav} ${menuOpen ? HeaderCSS.navOpen : ""}`}>
         <ul>
-          <li>
-            <Link to="/" onClick={handleLinkClick}>
+        <li>
+            <Link to="/home" onClick={handleLinkClick}>
               Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/gallery" onClick={handleLinkClick}>
+              Gallery
             </Link>
           </li>
           <li>

@@ -109,7 +109,7 @@ def process_images(input_folder, output_folder, target_size=(800, 1000), backgro
 # Run the script
 process_images(
     input_folder=Path("E:/GitHub/artistsoonee_paintings"),
-    output_folder=Path("E:/GitHub/artistsoonee/src/assets/images"),
+    output_folder=Path("E:/GitHub/artistsoonee/src/assets/images_gallery"),
     target_size=(800, 1000),
     background_color=(34, 40, 49),
     sort_by='oldest',  # Using 'oldest' to get ascending order (oldest first)

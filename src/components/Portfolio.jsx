@@ -7,7 +7,7 @@ import imageMetadata from "./ImageMetadata"; // Mapping of filename to metadata
 // Dynamically import all images from the assets/images folder
 const importAll = (r) => r.keys().map(r);
 let images = importAll(
-  require.context("../assets/images", false, /\.(webp|png|jpg|jpeg|gif)$/)
+  require.context("../assets/images_gallery", false, /\.(webp|png|jpg|jpeg|gif)$/)
 );
 
 // Sort images in descending order (newest first)
@@ -16,6 +16,22 @@ images = images.sort((a, b) => {
   const nameB = b.split("/").pop();
   return nameB.localeCompare(nameA);
 });
+
+function stripHash(filenameWithHash) {
+  // e.g. "myPhoto_20230401.8a3f77e0.webp" → "myPhoto_20230401.webp"
+  const parts = filenameWithHash.split(".");
+  const ext  = parts.pop();        // "webp"
+  // re-join everything up to the *last* chunk before hash
+  const beforeHash = parts
+    .join(".")                     // "myPhoto_20230401.8a3f77e0"
+    .replace(/\.[0-9a-f]{6,}$/i, ""); // strip off the hex hash
+  return `${beforeHash}.${ext}`;
+}
+
+function getFilenameFromSrc(src) {
+  const full = src.split("/").pop();        // "myPhoto_20230401.8a3f77e0.webp"
+  return stripHash(full);                   // "myPhoto_20230401.webp"
+}
 
 // Helper function to extract the year from a filename.
 function getYearFromFilename(src) {
@@ -158,7 +174,8 @@ function ImageWrapper({ src, index, onVisible }) {
   };
 
   // Extract the filename to look up metadata
-  const filename = src.split("/").pop();
+  // const filename = src.split("/").pop();
+  const filename = getFilenameFromSrc(src);
   const metadata = imageMetadata[filename] || {};
 
   React.useEffect(() => {

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
-import Highlight from "../components/Highlight";
+import Portfolio from "../components/Portfolio";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 
-function Home() {
+function Gallery() {
   const [showScroll, setShowScroll] = useState(false);
 
   useEffect(() => {
@@ -25,11 +25,11 @@ function Home() {
   return (
     <div>
       <Header />
-      <Highlight />
+      <Portfolio />
       <Footer />
       {showScroll && <ScrollToTop />}
     </div>
   );
 }
 
-export default Home;
+export default Gallery;
