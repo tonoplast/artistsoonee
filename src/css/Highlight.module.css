@@ -1,13 +1,13 @@
 
-
-/* 1) Make the container a positioned box with a fixed/minimum height: */
 .slideshowContainer {
   position: relative;
   width: 90%;
   max-width: 800px;
   margin: 0 auto;
   min-height: 75vh;
-  padding-bottom: 80px;  /* to leave room for the counter / caption if you like */
+  min-height: calc(100vh - 80px);
+  /* padding-bottom: 1rem;  */
+  /* padding-bottom: 80px;  */
   overflow: hidden;
 }
 
@@ -76,7 +76,7 @@
 /* Counter in corner */
 .counter {
   position: absolute;
-  bottom: 1rem;
+  bottom: 3rem;
   right: 1rem;
   background: rgba(0,0,0,0.5);
   color: #fff;
