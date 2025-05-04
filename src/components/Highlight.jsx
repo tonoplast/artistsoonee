@@ -53,7 +53,8 @@ export default function Slideshow() {
 
   return (
     <div className={HighlightCSS.slideshowContainer}>
-      <AnimatePresence mode="sync">
+      {/* <AnimatePresence mode="sync"> */}
+      <AnimatePresence mode="wait">
         <motion.div
           key={index}
           className={HighlightCSS.slideWrapper}
