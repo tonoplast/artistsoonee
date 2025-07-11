@@ -116,6 +116,31 @@ AIAM 국제 앙드레 말로 협회, 대한민국 창작미술협회, 용산미�
 
   `,
   AboutButtonText: "Say Hey!",
+  
+  // Articles and Press Coverage
+  Articles: [
+    {
+      title: "Fondation Taylor Registration: Critical Essay - English Version",
+      description: "Official critical essay for SooNee's registration with the prestigious Fondation Taylor in France. This English version contains the comprehensive artistic evaluation required for her lifetime membership application, prepared by AIAM Association under Pierre Coureux's direction.",
+      category: "catalog",
+      date: "2025-07-11",
+      pdfUrl: "Portrait d (Eng).pdf"
+    },
+    {
+      title: "Fondation Taylor : Essai Critique - Version Française",
+      description: "Essai critique officiel pour l'enregistrement de SooNee auprès de la prestigieuse Fondation Taylor en France. Cette version française contient l'évaluation artistique complète requise pour sa candidature de membre à vie, préparée par l'Association AIAM sous la direction de Pierre Coureux.",
+      category: "catalog",
+      date: "2025-07-11",
+      pdfUrl: "Portrait d (Fr).pdf"
+    },
+    {
+      title: "Fondation Taylor 등재: 비평문 - 한국어 버전",
+      description: "프랑스의 명문 Fondation Taylor 등재를 위한 공식 비평문입니다. 이 한국어 버전은 AIAM 협회에서 Pierre Coureux 회장님의 지도 하에 준비한 종신회원 신청에 필요한 종합적인 예술 평가를 담고 있습니다.",
+      category: "catalog",
+      date: "2025-07-11",
+      pdfUrl: "Portrait d (Kr).pdf"
+    }
+  ],
 };
 
 export default Data;

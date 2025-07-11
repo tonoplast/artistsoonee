@@ -26,7 +26,12 @@ function Header() {
       </Link>
 
       <div className={HeaderCSS.hamburger}>
-        <Hamburger toggled={menuOpen} toggle={setMenuOpen} />
+        <Hamburger 
+          toggled={menuOpen} 
+          toggle={setMenuOpen}
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
+        />
       </div>
       <nav className={`${HeaderCSS.nav} ${menuOpen ? HeaderCSS.navOpen : ""}`}>
         <ul>
@@ -43,6 +48,11 @@ function Header() {
           <li>
             <Link to="/about" onClick={handleLinkClick}>
               About
+            </Link>
+          </li>
+          <li>
+            <Link to="/articles" onClick={handleLinkClick}>
+              Articles
             </Link>
           </li>
         </ul>
