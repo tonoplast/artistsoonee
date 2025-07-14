@@ -34,7 +34,6 @@ const Data = {
 · ’12 대한민국 현대조형 미술대전
 · ’19 프랑스 AIAM 앙데팡당 대중인기상, France
 · ’22 벨기에 브르쉘 AIAM 최우수작가상, Belgium
-· ’24 구스타프 크림트 어워드 본상, Austria
 · ’25 LE SALON DES INDEPENDANTS 우수작가상, France
 <br></br>
 
