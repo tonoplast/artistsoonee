@@ -1,7 +1,7 @@
 const highlightMetadata = {
-    "00386_20260422.jpg": { title: "Her - Quiet Bloom - Hanji Series (2026)", size: "117 x 91 cm" },
-    "00387_20260422.jpg": { title: "Her - She Carries the Wind - Hanji Series (2026)", size: "117 x 91 cm" },
-    "00385_20260319.jpg": { title: "Her - Veiled in Green - Hanji Series (2026)", size: "53 x 46 cm" },
+    "00386_20260422.jpg": { title: "Her - Quiet Bloom (2026)", size: "117 x 91 cm" },
+    "00387_20260422.jpg": { title: "Her - She Carries the Wind (2026)", size: "117 x 91 cm" },
+    "00385_20260319.jpg": { title: "Her - Veiled in Green (2026)", size: "53 x 46 cm" },
 
     "00357_20250614.jpg": { title: "Her - Hanji Series (2025)", size: "65 x 53 cm" },
     "00353_20250614.jpg": { title: "Her - Hanji Series (2025)", size: "73 x 61 cm" },
