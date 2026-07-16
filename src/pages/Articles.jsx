@@ -63,10 +63,11 @@ function Articles() {
 
         <div className={ArticlesCSS.articlesGrid}>
           {filteredArticles.length > 0 ? (
-            filteredArticles.map((article, index) => (
+            filteredArticles.map((article) => (
               <PDFViewer
-                key={index}
+                key={article.title}
                 pdfUrl={article.pdfUrl}
+                externalUrl={article.externalUrl}
                 title={article.title}
                 description={article.description}
                 category={article.category}

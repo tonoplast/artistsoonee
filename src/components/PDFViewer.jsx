@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { FaDownload, FaEye, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaDownload, FaEye, FaTimes, FaChevronLeft, FaChevronRight, FaExternalLinkAlt } from 'react-icons/fa';
 import PDFViewerCSS from '../css/PDFViewer.module.css';
 
-const PDFViewer = ({ pdfUrl, title, description, category, date }) => {
+const PDFViewer = ({ pdfUrl, externalUrl, title, description, category, date }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [numPages, setNumPages] = useState(null);
@@ -29,6 +29,8 @@ const PDFViewer = ({ pdfUrl, title, description, category, date }) => {
 
     if (pdfUrl) {
       loadPdfFile();
+    } else {
+      setPdfFile(null);
     }
   }, [pdfUrl]);
 
@@ -90,18 +92,31 @@ const PDFViewer = ({ pdfUrl, title, description, category, date }) => {
       </div>
       
       <div className={PDFViewerCSS.actions}>
-        <button 
-          className={`${PDFViewerCSS.actionButton} ${PDFViewerCSS.viewButton}`}
-          onClick={openModal}
-        >
-          <FaEye /> View
-        </button>
-        <button 
-          className={`${PDFViewerCSS.actionButton} ${PDFViewerCSS.downloadButton}`}
-          onClick={handleDownload}
-        >
-          <FaDownload /> Download
-        </button>
+        {externalUrl ? (
+          <a
+            href={externalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${PDFViewerCSS.actionButton} ${PDFViewerCSS.viewButton}`}
+          >
+            <FaExternalLinkAlt /> Read Article
+          </a>
+        ) : (
+          <>
+            <button
+              className={`${PDFViewerCSS.actionButton} ${PDFViewerCSS.viewButton}`}
+              onClick={openModal}
+            >
+              <FaEye /> View
+            </button>
+            <button
+              className={`${PDFViewerCSS.actionButton} ${PDFViewerCSS.downloadButton}`}
+              onClick={handleDownload}
+            >
+              <FaDownload /> Download
+            </button>
+          </>
+        )}
       </div>
 
       {/* Modal for PDF viewing - rendered outside container */}

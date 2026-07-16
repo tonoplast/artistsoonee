@@ -138,6 +138,20 @@ AIAM 국제 앙드레 말로 협회, 대한민국 창작미술협회, 용산미�
       category: "catalog",
       date: "2025-07-11",
       pdfUrl: "Portrait d (Kr).pdf"
+    },
+    {
+      title: "이순희 작가, 제140회 앙데팡당에서 대중인기상 수상",
+      description: "Press coverage of SooNee receiving the Public Choice Award (대중인기상) at the 140th Salon des Indépendants, held in Paris from February 13-18, 2024. The article highlights her internationally recognized portrait work and her extensive exhibition career at home and abroad.",
+      category: "press",
+      date: "2024-04-04",
+      externalUrl: "https://www.mhns.co.kr/news/articleView.html?idxno=580848"
+    },
+    {
+      title: "이순희 작가, 프랑스 AIAM '2025 Prix d'Excellence' 수상",
+      description: "Global Epic (글로벌에픽) reports on SooNee receiving the Prix d'Excellence at the AIAM ceremony during Art Capital 2025 in Paris, recognizing her artistic excellence, consistent creative output, and international influence — her second consecutive honor from the European art world.",
+      category: "press",
+      date: "2025-04-23",
+      externalUrl: "https://m.globalepic.co.kr/view.php?ud=202504231407173936cf2d78c68_29"
     }
   ],
 };
