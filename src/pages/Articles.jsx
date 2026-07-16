@@ -6,17 +6,22 @@ import ArticlesCSS from '../css/Articles.module.css';
 import data from '../Data';
 
 function Articles() {
+  const sortedArticles = [...data.Articles].sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
+
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [filteredArticles, setFilteredArticles] = useState(data.Articles);
+  const [filteredArticles, setFilteredArticles] = useState(sortedArticles);
 
   useEffect(() => {
     if (selectedCategory === 'all') {
-      setFilteredArticles(data.Articles);
+      setFilteredArticles(sortedArticles);
     } else {
       setFilteredArticles(
-        data.Articles.filter(article => article.category === selectedCategory)
+        sortedArticles.filter(article => article.category === selectedCategory)
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategory]);
 
   const categories = ['all', ...new Set(data.Articles.map(article => article.category))];
