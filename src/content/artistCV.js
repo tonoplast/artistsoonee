@@ -89,6 +89,7 @@ const artistCV = {
 - Puma × Bape
 - Lee Kuan Yew × Singapore 50th Anniversary Celebration, Metro Department Store, Singapore
 - ArtSalon × MF Amsterdam Event
+- Additional brand and gallery collaborations across Korea and Europe
 
 ## International Art Activities
 
@@ -231,6 +232,7 @@ const artistCV = {
 - Puma × Bape
 - 리관유(Lee Kuan Yew) × Singapore 50주년 기념일, 싱가포르 메트로 백화점
 - ArtSalon × MF Amsterdam Event
+- 한국 및 유럽 갤러리·브랜드와의 추가 협업
 
 ## 해외 특별전시 참가 (International Art Activities)
 

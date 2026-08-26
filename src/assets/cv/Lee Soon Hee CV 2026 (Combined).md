@@ -89,6 +89,7 @@ One of the most memorable moments in her career came when she first experimented
 - Puma × Bape
 - Lee Kuan Yew × Singapore 50th Anniversary Celebration, Metro Department Store, Singapore
 - ArtSalon × MF Amsterdam Event
+- Additional brand and gallery collaborations across Korea and Europe
 
 ## International Art Activities
 
