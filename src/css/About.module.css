@@ -56,6 +56,33 @@
     cursor: pointer;
     font-size: 1em;
     font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.buttonRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.headingRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.langButton {
+    padding: 6px 14px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    flex-shrink: 0;
 }
 
 @media (min-width: 768px) {
@@ -98,19 +125,47 @@
 
 
 
-/* In About.module.css or a markdown-specific CSS file */
-.react-markdown p {
+.markdown p {
     margin-top: 1em;
     margin-bottom: 1em;
     color: lightgray;
+    line-height: 1.5;
 }
 
-.react-markdown h2 {
-    margin-top: 1em;
+.markdown h2 {
+    margin-top: 1.4em;
+    margin-bottom: 0.6em;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.3em;
+}
+
+.markdown li {
+    color: lightgray;
+    margin-bottom: 0.3em;
+}
+
+.markdown li::marker {
+    color: lightgray;
+}
+
+.markdown table {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
     margin-bottom: 1em;
+    width: 100%;
+}
+
+.markdown th,
+.markdown td {
+    text-align: left;
+    padding: 6px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    color: lightgray;
+    white-space: nowrap;
+}
+
+.markdown th {
     color: white;
 }
-
-.react-markdown li::marker {
-    color: lightgray;
-}  

@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";
 import About from "./pages/About";
+import CV from "./pages/CV";
 import Articles from "./pages/Articles";
 import NotFound from "./pages/NotFound";
 import Upload from "./pages/Upload";
@@ -32,6 +33,7 @@ const App = () => {
             <Route path="/home" element={<Home />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/about" element={<About />} />
+            <Route path="/cv" element={<CV />} />
             <Route path="/articles" element={<Articles />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/upload" element={<Upload />} />
