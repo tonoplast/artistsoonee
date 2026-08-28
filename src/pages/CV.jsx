@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -8,14 +8,67 @@ import data from "../Data";
 
 function CV() {
   const [lang, setLang] = useState("en");
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const content = artistCV[lang];
+  const sheetRef = useRef(null);
 
   const toggleLang = () => {
     setLang((prev) => (prev === "en" ? "kr" : "en"));
   };
 
-  const handlePrint = () => {
-    window.print();
+  const handleDownload = async () => {
+    const node = sheetRef.current;
+    if (!node || isGeneratingPdf) return;
+
+    setIsGeneratingPdf(true);
+
+    // Force a fixed desktop-like width so the PDF looks the same
+    // regardless of the device (mobile) viewport it was generated on.
+    const { width: originalWidth, maxWidth: originalMaxWidth } = node.style;
+    node.style.width = "800px";
+    node.style.maxWidth = "800px";
+
+    try {
+      const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
+        import("html2canvas"),
+        import("jspdf"),
+      ]);
+
+      const canvas = await html2canvas(node, {
+        scale: 2,
+        backgroundColor: "#ffffff",
+        useCORS: true,
+      });
+
+      const imgData = canvas.toDataURL("image/jpeg", 0.95);
+      const pdf = new jsPDF({ unit: "pt", format: "a4" });
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = pageWidth;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+      let heightLeft = imgHeight;
+      let position = 0;
+
+      pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+
+      while (heightLeft > 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+
+      pdf.save(`SooNee_CV_${lang}.pdf`);
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      alert("Could not generate the PDF. Please try again.");
+    } finally {
+      node.style.width = originalWidth;
+      node.style.maxWidth = originalMaxWidth;
+      setIsGeneratingPdf(false);
+    }
   };
 
   return (
@@ -28,13 +81,17 @@ function CV() {
           <button onClick={toggleLang} className={CVCSS.toolbarButton}>
             {content.languageToggleLabel}
           </button>
-          <button onClick={handlePrint} className={CVCSS.toolbarButton}>
-            {content.printButtonLabel}
+          <button
+            onClick={handleDownload}
+            className={CVCSS.toolbarButton}
+            disabled={isGeneratingPdf}
+          >
+            {isGeneratingPdf ? "Generating..." : content.printButtonLabel}
           </button>
         </div>
       </div>
 
-      <div className={CVCSS.sheet}>
+      <div className={CVCSS.sheet} ref={sheetRef}>
         <h1 className={CVCSS.name}>{content.name}</h1>
         <p className={CVCSS.contactLine}>
           {data.AboutEmail} &middot; artistsoonee.vercel.app
