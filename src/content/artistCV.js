@@ -5,6 +5,11 @@ const artistCV = {
   en: {
     heading: "About Me",
     name: "Lee Soon Hee (SooNee)",
+    contactInfo: "Feel free to reach out at <u>artistsoon@gmail.com</u>.",
+    contactButtonLabel: "Say Hey!",
+    downloadLabel: "Download CV",
+    printButtonLabel: "Download PDF",
+    languageToggleLabel: "KR",
     bioParagraphs: [
       "Born on December 27, 1953, South Korean artist Lee Soon Hee, also known as SooNee, began her artistic journey in earnest in 2006. Without formal fine arts training, she has carved a distinctive path in the contemporary art scene, driven by an innate passion for expression and a relentless pursuit of artistic excellence.",
       "Her early works were primarily oil and acrylic on canvas, but as her art evolved, she found a unique voice through the use of coffee and traditional Korean ink on Hanji (Korean mulberry paper). This shift allowed her to blend modern sensibilities with the timeless beauty of Korean heritage, making her work deeply personal yet universally resonant.",
@@ -129,7 +134,7 @@ const artistCV = {
 
 ## Permanent Collection
 
-**2024.03**: *Attestation d'une Collection Permanente*, five works, including a work alongside one by So Ji-sub, acquired for the permanent collection of AIAM Gallery, IFA, Brussels, Belgium.
+- **2024.03**: *Attestation d'une Collection Permanente* — Five works (including a work alongside one by So Ji-sub) acquired for the permanent collection of AIAM Gallery, IFA, Brussels, Belgium.
 
 ## Recognition & Membership
 
@@ -141,15 +146,17 @@ const artistCV = {
 - Cheongsaekhoe (member)
 - Hooks Avenue (Singapore), Artist
 `,
-    downloadLabel: "Download CV",
-    printButtonLabel: "Download PDF",
-    languageToggleLabel: "KR",
   },
   kr: {
     heading: "작가 소개",
-    name: "이 순희 (수니)",
+    name: "이순희 (수니)",
+    contactInfo: "문의사항은 <u>artistsoon@gmail.com</u>으로 편하게 연락주세요.",
+    contactButtonLabel: "문의하기",
+    downloadLabel: "CV 다운로드",
+    printButtonLabel: "PDF 다운로드",
+    languageToggleLabel: "EN",
     bioParagraphs: [
-      "1953년 12월 27일 출생한 한국의 현대 미술가 이순희(수니로도 알려진)는 2006년부터 본격적으로 작품 활동을 시작했습니다. 정규 미술 교육을 받지 않았음에도 불구하고, 그녀는 예술에 대한 타고난 열정과 끊임없는 탐구를 바탕으로 독창적인 작품 세계를 구축해왔습니다.",
+      "1953년 12월 27일 출생한 한국의 현대 미술가 이순희(수니로도 알려진)는 2006년부터 본격적으로 작품 활동을 시작했습니다. 정규 미술 교육을 받지 않았음에도 불구하고, 예술에 대한 타고난 열정과 끊임없는 탐구를 바탕으로 독창적인 작품 세계를 구축해왔습니다.",
       "초기 작품은 주로 캔버스에 유화와 아크릴로 표현되었으나, 이후 커피와 한국 전통 먹, 그리고 닥나무로 만든 한지(뽕나무 종이)라는 독특한 매체를 활용하게 되었습니다. 이러한 전환은 현대적 감수성과 한국 전통미를 조화롭게 융합하여, 작품에 깊은 개인적 의미와 보편적 공감을 동시에 담아낼 수 있게 했습니다.",
       "그녀의 예술적 스타일은 몽환적이면서도 사색적인 인물 표현이 특징입니다. 초기에는 정교한 장미 패턴이 돋보이는 《드림 시리즈(Dream Series)》를 통해 꿈속 같은 분위기를 연출했으며, 이후 《Her 시리즈》를 통해 더욱 미니멀하고 감성적인 작품 세계를 선보이고 있습니다. 그녀의 작품 속 인물들은 고요한 사유에 잠긴 듯 여백과 부드러운 질감 속에서 고독과 사색, 깊이를 자아냅니다.",
       "이순희는 지금까지 31회의 개인전을 개최했으며, 전 세계적으로 300여회의 단체전에 참여했습니다. 2019년 프랑스 AIAM 대중인기상(Prix du Public), 2022년 브뤼셀 최우수 글로벌 예술상(Prix de la Meilleure Artiste Globale) 등을 수상하며 국제적으로도 주목받고 있습니다. 가장 최근에는 2026년 프랑스 그랑 팔레 앙데팡당(Salon des Indépendants) 전시를 통해 글로벌 무대에서의 입지를 더욱 확고히 했습니다.",
@@ -165,7 +172,7 @@ const artistCV = {
 
 ## 개인전 (선정, 31회 중)
 
-| 연도 | 장소 |
+| 일자 | 장소 |
 |---|---|
 | 2006.09.23 | 고양세계꽃박람회장 |
 | 2008.11.19 | 세종문화회관 미술관 |
@@ -186,7 +193,7 @@ const artistCV = {
 
 ## 초대전 (선정, 27회 중)
 
-| 연도 | 장소 |
+| 일자 | 장소 |
 |---|---|
 | 2006 | 중앙교회 쉴만한 카페갤러리 |
 | 2007 | 광성교회 올리브향기 갤러리 (2회: 6월, 12월) |
@@ -200,7 +207,7 @@ const artistCV = {
 | 2022.07.2 | 아트컨티뉴 교대 아뜰리에 |
 | 2024.09 | 인코센터, 인도 |
 | 2025.02.22 | 유경미술관 초대개인전 |
-| - | 초대2인전 「경애하는 그녀」 |
+| - | 초대2인전 《경애하는 그녀》 |
 | - | 그 외 100여회 |
 
 ## 단체전
@@ -234,45 +241,45 @@ const artistCV = {
 - ArtSalon × MF Amsterdam Event
 - 한국 및 유럽 갤러리·브랜드와의 추가 협업
 
-## 해외 특별전시 참가 (International Art Activities)
+## 해외 특별전시 참가
 
-- 2019 Salon des Indépendants (Grand Palais Éphémère, Paris, France)
-- 2019 AIAM 앙데팡당 드로잉전 (Carrousel du Louvre, Paris, France)
-- 2022 Projet de l'Esprit Nouveau à Travels, AIAM Gallery (IFA, 브뤼셀, 벨기에)
-- 2022 AIAM–ADAGP 글로벌 연합회원전 (Gallery Iaon)
-- 2023 Salon des Indépendants (Grand Palais Éphémère, Paris, France)
-- 2023 AIAM–ADAGP 글로벌 연합회원전 (Gallery Iaon)
-- 2024 Salon des Indépendants (Grand Palais Éphémère, Paris, France)
-- 2024 AIAM–ADAGP 글로벌 연합회원전 (Galerie Au Médicis, Paris, France)
-- 2025 Salon des Indépendants (Grand Palais Éphémère, Paris, France)
-- 2025 AIAM–ADAGP 글로벌 연합회원전 (Agnes Nord Galerie, Paris, France)
-- 2026 Salon des Indépendants (Grand Palais, Paris, France)
+- 2019: Salon des Indépendants (Grand Palais Éphémère, Paris, France)
+- 2019: AIAM 앙데팡당 드로잉전 (Carrousel du Louvre, Paris, France)
+- 2022: Projet de l'Esprit Nouveau à Travels, AIAM Gallery (IFA, 브뤼셀, 벨기에)
+- 2022: AIAM–ADAGP 글로벌 연합회원전 (Gallery Iaon)
+- 2023: Salon des Indépendants (Grand Palais Éphémère, Paris, France)
+- 2023: AIAM–ADAGP 글로벌 연합회원전 (Gallery Iaon)
+- 2024: Salon des Indépendants (Grand Palais Éphémère, Paris, France)
+- 2024: AIAM–ADAGP 글로벌 연합회원전 (Galerie Au Médicis, Paris, France)
+- 2025: Salon des Indépendants (Grand Palais Éphémère, Paris, France)
+- 2025: AIAM–ADAGP 글로벌 연합회원전 (Agnes Nord Galerie, Paris, France)
+- 2026: Salon des Indépendants (Grand Palais, Paris, France)
 
-## 수상내역
+## 수상 내역
 
 **국내**
-- '08 MBC 금강 미술대전
-- '09 제1회 대한민국 청원 미술대전 최우수상
-- '09 한국미술의 빛 작가공모전
-- '09 제10회 신사임당 미술대전
-- '10 제8회 겸재 진경 미술대전
-- '10 MBC 금강 미술대전
-- '10 제7회 용산국제미술대전 특별상
-- '11 제9회 겸재 진경 미술대전
-- '11 MBC 금강 미술대전
-- '11 경기도 평화 미술대전
-- '12 한국 국토해양 국제공모전
-- '12 대한민국 현대조형 미술대전
+- 2008: MBC 금강 미술대전
+- 2009: 제1회 대한민국 청원 미술대전 최우수상
+- 2009: 한국미술의 빛 작가공모전
+- 2009: 제10회 신사임당 미술대전
+- 2010: 제8회 겸재 진경 미술대전
+- 2010: MBC 금강 미술대전
+- 2010: 제7회 용산국제미술대전 특별상
+- 2011: 제9회 겸재 진경 미술대전
+- 2011: MBC 금강 미술대전
+- 2011: 경기도 평화 미술대전
+- 2012: 한국 국토해양 국제공모전
+- 2012: 대한민국 현대조형 미술대전
 
 **국제**
-- 2019.02 Prix du Public (대중인기상), Salon des Indépendants (Grand Palais Éphémère, Paris, France)
-- 2022.02 Prix de la Meilleure Artiste Globale (최우수 글로벌 예술상)
-- 2024.11 Prix du Public (대중인기상)
-- 2025.03 Prix d'Excellence (우수작가상), LE SALON DES INDEPENDANTS, France
+- 2019.02: Prix du Public (대중인기상), Salon des Indépendants (Grand Palais Éphémère, Paris, France)
+- 2022.02: Prix de la Meilleure Artiste Globale (최우수 글로벌 예술상)
+- 2024.11: Prix du Public (대중인기상)
+- 2025.03: Prix d'Excellence (우수작가상), LE SALON DES INDÉPENDANTS, France
 
-## 영구소장
+## 영구 소장
 
-2024.03 Attestation d'une Collection Permanente: 작품 5점(소지섭 작품 외)이 벨기에 AIAM Gallery IFA 브뤼셀 미술관에 영구 소장됨.
+- **2024.03**: *Attestation d'une Collection Permanente* — 작품 5점(소지섭 작품 외)이 벨기에 AIAM Gallery IFA 브뤼셀 미술관에 영구 소장됨.
 
 ## 회원 및 등재
 
@@ -284,9 +291,6 @@ const artistCV = {
 - 청색회 회원
 - Hooks Avenue (Singapore) Artist
 `,
-    downloadLabel: "CV 다운로드",
-    printButtonLabel: "PDF 다운로드",
-    languageToggleLabel: "EN",
   },
 };
 

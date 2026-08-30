@@ -12,10 +12,6 @@ function CV() {
   const content = artistCV[lang];
   const sheetRef = useRef(null);
 
-  const toggleLang = () => {
-    setLang((prev) => (prev === "en" ? "kr" : "en"));
-  };
-
   const handleDownload = async () => {
     const node = sheetRef.current;
     if (!node || isGeneratingPdf) return;
@@ -75,18 +71,46 @@ function CV() {
     <div className={CVCSS.page}>
       <div className={CVCSS.toolbar}>
         <Link to="/about" className={CVCSS.backLink}>
-          &larr; Back to About
+          &larr; {lang === "kr" ? "소개 페이지로 돌아가기" : "Back to About"}
         </Link>
         <div className={CVCSS.toolbarActions}>
-          <button onClick={toggleLang} className={CVCSS.toolbarButton}>
-            {content.languageToggleLabel}
-          </button>
+          <div
+            className={CVCSS.langSwitcher}
+            role="group"
+            aria-label="Language selector"
+          >
+            <button
+              type="button"
+              onClick={() => setLang("en")}
+              className={`${CVCSS.langTab} ${
+                lang === "en" ? CVCSS.langTabActive : ""
+              }`}
+              aria-pressed={lang === "en"}
+            >
+              EN
+            </button>
+            <span className={CVCSS.langDivider}>|</span>
+            <button
+              type="button"
+              onClick={() => setLang("kr")}
+              className={`${CVCSS.langTab} ${
+                lang === "kr" ? CVCSS.langTabActive : ""
+              }`}
+              aria-pressed={lang === "kr"}
+            >
+              KR
+            </button>
+          </div>
           <button
             onClick={handleDownload}
             className={CVCSS.toolbarButton}
             disabled={isGeneratingPdf}
           >
-            {isGeneratingPdf ? "Generating..." : content.printButtonLabel}
+            {isGeneratingPdf
+              ? lang === "kr"
+                ? "생성 중..."
+                : "Generating..."
+              : content.printButtonLabel}
           </button>
         </div>
       </div>

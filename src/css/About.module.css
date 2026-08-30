@@ -2,99 +2,286 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #222831;
 }
 
 .content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /*center;*/
-    justify-content: center;
-    padding: 20px;
-    margin: auto;
-    max-width: 1200px;
-    text-align: center;
+    align-items: center;
+    padding: 24px 20px 48px;
+    margin: 0 auto;
+    max-width: 1100px;
+    width: 100%;
+    box-sizing: border-box;
     flex-grow: 1;
 }
 
 .imageWrapper {
     width: 100%;
-    max-width: 300px;
-    margin-bottom: 20px;
+    max-width: 280px;
+    margin: 0 auto 28px;
+    text-align: center;
 }
 
 .image {
     width: 100%;
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    display: block;
+    object-fit: cover;
 }
 
 .textWrapper {
     width: 100%;
-    max-width: 800px;
-}
-
-.textWrapper h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: white;
-}
-
-.textWrapper p {
-    font-size: 1em;
-    line-height: 1.4;
-    margin-bottom: 20px;
-    text-align: justify;
-    color: lightgray;
-}
-
-.contactButton {
-    padding: 12px 24px;
-    background-color: tomato;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.buttonRow {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    max-width: 720px;
+    box-sizing: border-box;
+    text-align: left;
 }
 
 .headingRow {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 16px;
+    margin-bottom: 24px;
 }
 
-.langButton {
-    padding: 6px 14px;
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9em;
-    font-weight: bold;
+.headingRow h1 {
+    margin: 0;
+    font-size: 1.85rem;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+/* Language Switcher */
+.langSwitcher {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 3px 6px;
+    gap: 4px;
     flex-shrink: 0;
 }
 
-@media (min-width: 768px) {
+.langTab {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.langTab:hover:not(.langTabActive) {
+    color: #ffffff;
+}
+
+.langTabActive {
+    background-color: tomato;
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(255, 99, 71, 0.35);
+}
+
+.langDivider {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.75rem;
+    user-select: none;
+}
+
+/* Markdown Content Styling */
+.markdown {
+    color: #d6d6d6;
+}
+
+.markdown p {
+    margin-top: 1rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.75;
+    font-size: 1.02rem;
+    text-align: left;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    color: #d6d6d6;
+}
+
+.markdown h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 0.4rem;
+}
+
+.markdown ul {
+    margin: 0.5rem 0 1.25rem;
+    padding-left: 1.25rem;
+}
+
+.markdown li {
+    color: #d6d6d6;
+    line-height: 1.6;
+    margin-bottom: 0.4rem;
+    font-size: 0.98rem;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.markdown li::marker {
+    color: tomato;
+}
+
+.markdown strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.markdown em {
+    font-style: italic;
+    color: #f0f0f0;
+}
+
+/* Responsive Markdown Table */
+.markdown table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.95rem;
+    table-layout: auto;
+}
+
+.markdown th {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.markdown td {
+    text-align: left;
+    padding: 7px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: #d6d6d6;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.markdown th:first-child,
+.markdown td:first-child {
+    white-space: nowrap;
+    width: 1%;
+    padding-right: 18px;
+    color: #9ca3af;
+    font-variant-numeric: tabular-nums;
+}
+
+.markdown th:last-child,
+.markdown td:last-child {
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    width: auto;
+    color: #e5e7eb;
+}
+
+/* Contact Info */
+.contactInfo {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #d6d6d6;
+    font-size: 1.02rem;
+    line-height: 1.6;
+}
+
+.contactInfo u {
+    color: #ff7b63 !important;
+    text-underline-offset: 3px;
+}
+
+/* Action Buttons */
+.buttonRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 1.5rem;
+}
+
+.contactButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    background-color: tomato;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.98rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(255, 99, 71, 0.25);
+}
+
+.contactButton:hover {
+    background-color: #ff5233;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 99, 71, 0.35);
+}
+
+.secondaryButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.98rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.secondaryButton:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-1px);
+}
+
+/* Desktop layout breakpoint */
+@media (min-width: 820px) {
     .content {
         flex-direction: row;
-        text-align: left;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 48px;
+        padding: 48px 32px 64px;
     }
 
     .imageWrapper {
-        margin-right: 40px;
-        margin-bottom: 0;
+        width: 280px;
+        max-width: 280px;
+        flex-shrink: 0;
+        margin: 0;
+        position: sticky;
+        top: 32px;
     }
 
     .textWrapper {
@@ -102,76 +289,29 @@
         min-width: 0;
     }
 
-    .textWrapper h1 {
-        font-size: 2.5em;
-    }
-
-    .textWrapper p {
-        font-size: 1.2em;
-        line-height: 1.4;
-    }
-
-    .contactButton {
-        font-size: 1.2em;
+    .headingRow h1 {
+        font-size: 2.25rem;
     }
 }
 
-.textWrapper p {
-    white-space: pre-line;
-}
+/* Very narrow mobile screens */
+@media (max-width: 480px) {
+    .content {
+        padding: 16px 14px 40px;
+    }
 
+    .headingRow h1 {
+        font-size: 1.6rem;
+    }
 
-.contactInfo {
-    color: white !important;
-}
+    .buttonRow {
+        flex-direction: column;
+        width: 100%;
+    }
 
-.contactInfo u {
-    color: white !important;
-}
-
-
-
-.markdown p {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    color: lightgray;
-    line-height: 1.5;
-}
-
-.markdown h2 {
-    margin-top: 1.4em;
-    margin-bottom: 0.6em;
-    color: white;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding-bottom: 0.3em;
-}
-
-.markdown li {
-    color: lightgray;
-    margin-bottom: 0.3em;
-}
-
-.markdown li::marker {
-    color: lightgray;
-}
-
-.markdown table {
-    display: block;
-    overflow-x: auto;
-    border-collapse: collapse;
-    margin-bottom: 1em;
-    width: 100%;
-}
-
-.markdown th,
-.markdown td {
-    text-align: left;
-    padding: 6px 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    color: lightgray;
-    white-space: nowrap;
-}
-
-.markdown th {
-    color: white;
+    .contactButton,
+    .secondaryButton {
+        width: 100%;
+        box-sizing: border-box;
+    }
 }

@@ -2,6 +2,7 @@
     min-height: 100vh;
     background-color: #2b2b2b;
     padding: 24px 16px 64px;
+    box-sizing: border-box;
 }
 
 .toolbar {
@@ -10,17 +11,63 @@
     justify-content: space-between;
     max-width: 800px;
     margin: 0 auto 20px;
+    gap: 12px;
 }
 
 .backLink {
     color: white;
     text-decoration: none;
     font-size: 0.95em;
+    transition: opacity 0.2s ease;
+}
+
+.backLink:hover {
+    opacity: 0.8;
 }
 
 .toolbarActions {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 12px;
+}
+
+.langSwitcher {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 3px 6px;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.langTab {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.langTab:hover:not(.langTabActive) {
+    color: #ffffff;
+}
+
+.langTabActive {
+    background-color: tomato;
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(255, 99, 71, 0.35);
+}
+
+.langDivider {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.75rem;
+    user-select: none;
 }
 
 .toolbarButton {
@@ -32,6 +79,18 @@
     cursor: pointer;
     font-size: 0.9em;
     font-weight: bold;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(255, 99, 71, 0.3);
+}
+
+.toolbarButton:hover:not(:disabled) {
+    background-color: #ff5233;
+    transform: translateY(-1px);
+}
+
+.toolbarButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .sheet {
@@ -42,6 +101,7 @@
     padding: 48px;
     border-radius: 4px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
 }
 
 .name {
@@ -56,9 +116,11 @@
 }
 
 .bioParagraph {
-    line-height: 1.5;
+    line-height: 1.6;
     margin-bottom: 14px;
-    text-align: justify;
+    text-align: left;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
 .markdown h2 {
@@ -72,6 +134,8 @@
 .markdown p,
 .markdown li {
     line-height: 1.5;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
 .markdown table {
@@ -89,9 +153,47 @@
     vertical-align: top;
 }
 
+.markdown th:first-child,
+.markdown td:first-child {
+    white-space: nowrap;
+    width: 1%;
+    padding-right: 16px;
+}
+
+.markdown th:last-child,
+.markdown td:last-child {
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
 .markdown ul {
     margin: 0 0 12px;
     padding-left: 20px;
+}
+
+@media (max-width: 600px) {
+    .page {
+        padding: 16px 12px 48px;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .toolbarActions {
+        justify-content: space-between;
+    }
+
+    .sheet {
+        padding: 24px 16px;
+    }
+
+    .name {
+        font-size: 1.6em;
+    }
 }
 
 @media print {

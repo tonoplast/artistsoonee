@@ -28,10 +28,6 @@ function About() {
     emailLink.click();
   };
 
-  const toggleLang = () => {
-    setLang((prev) => (prev === "en" ? "kr" : "en"));
-  };
-
   return (
     <div className={AboutCSS.container}>
       <Header />
@@ -40,7 +36,7 @@ function About() {
           {profileImage && (
             <img
               src={profileImage}
-              alt="Artist's Profile"
+              alt={content.name}
               className={AboutCSS.image}
             />
           )}
@@ -48,13 +44,33 @@ function About() {
         <div className={AboutCSS.textWrapper}>
           <div className={AboutCSS.headingRow}>
             <h1>{content.heading}</h1>
-            <button
-              onClick={toggleLang}
-              className={AboutCSS.langButton}
-              aria-label="Switch language"
+            <div
+              className={AboutCSS.langSwitcher}
+              role="group"
+              aria-label="Language selector"
             >
-              {content.languageToggleLabel}
-            </button>
+              <button
+                type="button"
+                onClick={() => setLang("en")}
+                className={`${AboutCSS.langTab} ${
+                  lang === "en" ? AboutCSS.langTabActive : ""
+                }`}
+                aria-pressed={lang === "en"}
+              >
+                EN
+              </button>
+              <span className={AboutCSS.langDivider}>|</span>
+              <button
+                type="button"
+                onClick={() => setLang("kr")}
+                className={`${AboutCSS.langTab} ${
+                  lang === "kr" ? AboutCSS.langTabActive : ""
+                }`}
+                aria-pressed={lang === "kr"}
+              >
+                KR
+              </button>
+            </div>
           </div>
           <div className={AboutCSS.markdown}>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
@@ -66,20 +82,18 @@ function About() {
           </div>
           <div
             className={AboutCSS.contactInfo}
-            dangerouslySetInnerHTML={{ __html: data.AboutContactInfo }}
+            dangerouslySetInnerHTML={{ __html: content.contactInfo }}
           />
-
-          {/* Render the contact info */}
 
           <div className={AboutCSS.buttonRow}>
             <button onClick={handleClick} className={AboutCSS.contactButton}>
-              {data.AboutButtonText}
+              {content.contactButtonLabel}
             </button>
             <Link
               to="/cv"
               target="_blank"
               rel="noopener noreferrer"
-              className={AboutCSS.contactButton}
+              className={AboutCSS.secondaryButton}
             >
               {content.downloadLabel}
             </Link>
